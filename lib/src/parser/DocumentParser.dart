@@ -1,6 +1,7 @@
 part of parser;
 
 class DocumentParser extends AbstractBlockParser<Document> {
+  // Singleton
   static final _instance = new DocumentParser._internal();
 
   factory DocumentParser() {
@@ -9,19 +10,40 @@ class DocumentParser extends AbstractBlockParser<Document> {
 
   DocumentParser._internal();
 
+  // Parsers
+  static List<AbstractBlockParser> get parsers {
+    if (_parsers == null) {
+      _parsers = [
+          new SetextHeaderParser(),
+          new ParagraphParser()
+      ];
+    }
+
+    return _parsers;
+  }
+
+  static List<AbstractBlockParser> _parsers;
+
+
   BlockParseResult<Document> parse(Iterable<String> tokens) {
     Document document = new Document();
 
-    var paragraphParser = new ParagraphParser();
-    BlockParseResult<ParagraphElement> paragraphResult;
-    do {
-      paragraphResult = paragraphParser.parse(tokens);
+    BlockParseResult<Element> result;
 
-      if (paragraphResult == null) {
+    var l = parsers.length;
+    do {
+      for (var i = 0; i < l; ++i) {
+        result = parsers[i].parse(tokens);
+        if (result != null) {
+          break;
+        }
+      }
+
+      if (result == null) {
         break;
       }
-      document.children.add(paragraphResult.result);
-      tokens = paragraphResult.tokens;
+      document.children.add(result.result);
+      tokens = result.tokens;
     } while (true);
 
     if (document.children.length == 0) {
