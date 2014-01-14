@@ -1,0 +1,7 @@
+name: markdown
+version: 0.1.0
+author: Maxim Dikun <dikmax@gmail.com>
+description: A library for processing markdown.
+homepage: https://github.com/dpeek/dart-markdown
+dev_dependencies:
+  unittest: any
