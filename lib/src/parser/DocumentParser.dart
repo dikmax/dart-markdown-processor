@@ -15,6 +15,7 @@ class DocumentParser extends AbstractBlockParser<Document> {
     if (_parsers == null) {
       _parsers = [
           new SetextHeaderParser(),
+          new AtxHeaderParser(),
           new ParagraphParser()
       ];
     }
