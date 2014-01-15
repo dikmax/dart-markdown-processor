@@ -13,6 +13,7 @@ part 'parser/WhitespaceBlockParser.dart';
 part 'parser/ParagraphParser.dart';
 part 'parser/SetextHeaderParser.dart';
 part 'parser/AtxHeaderParser.dart';
+part 'parser/BlockquoteParser.dart';
 part 'parser/DocumentParser.dart';
 
 part 'parser/ParserCombinators.dart';

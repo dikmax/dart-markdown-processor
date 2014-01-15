@@ -4,13 +4,13 @@ part of parser;
 class WhitespaceBlockParser extends AbstractBlockParser<String> {
   static final WhitespaceBlockParser _instance = new WhitespaceBlockParser._internal();
 
-  static final _REGEXP = new RegExp(r'^\s*$');
-
   factory WhitespaceBlockParser() {
     return _instance;
   }
 
   WhitespaceBlockParser._internal();
+
+  static final _REGEXP = new RegExp(r'^\s*$');
 
   BlockParseResult<String> parse(Iterable<String> tokens) {
     ParseResult<Iterable<String>, Iterable<String>> result = _bpc.takeWhile(

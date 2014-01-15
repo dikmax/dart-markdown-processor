@@ -16,6 +16,7 @@ class BlockListParser extends AbstractBlockParser<List<Element>>{
       _parsers = [
           new SetextHeaderParser(),
           new AtxHeaderParser(),
+          new BlockquoteParser(),
           new ParagraphParser()
       ];
     }
