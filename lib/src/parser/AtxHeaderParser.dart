@@ -22,9 +22,7 @@ class AtxHeaderParser extends AbstractBlockParser<Paragraph> {
       return null;
     }
 
-    ParseResult<Iterable<String>, Iterable<String>> result = _bpc.skipWhile(
-        tokens.skip(1), (token) => token.isEmpty
-    );
+    ParseResult<Iterable<String>, String> result = _wbp.parse(tokens.skip(1));
 
     var header = new Header(HeaderStyle.ATX, match[1].length, [new Text(match[2])]);;
     return new BlockParseResult<Header>(result.tokens, header);

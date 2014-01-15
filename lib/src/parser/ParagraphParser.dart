@@ -19,9 +19,7 @@ class ParagraphParser extends AbstractBlockParser<Paragraph> {
       return null;
     }
 
-    ParseResult<Iterable<String>, Iterable<String>> result2 = _bpc.skipWhile(
-        result.tokens, (token) => token.isEmpty
-    );
+    ParseResult<Iterable<String>, String> result2 = _wbp.parse(result.tokens);
 
     var paragraph = new Paragraph([new Text(result.result.toList().join('\n'))]);
     return new BlockParseResult<Paragraph>(result2.tokens, paragraph);

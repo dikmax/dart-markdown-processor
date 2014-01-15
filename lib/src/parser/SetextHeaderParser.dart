@@ -22,9 +22,7 @@ class SetextHeaderParser extends AbstractBlockParser<Paragraph> {
       return null;
     }
 
-    ParseResult<Iterable<String>, Iterable<String>> result = _bpc.skipWhile(
-        tokens.skip(2), (token) => token.isEmpty
-    );
+    ParseResult<Iterable<String>, String> result = _wbp.parse(tokens.skip(2));
 
     var header = new Header(HeaderStyle.SETEXT, match[1][0] == '=' ? 1 : 2, [new Text(tokens.first)]);;
     return new BlockParseResult<Header>(result.tokens, header);
