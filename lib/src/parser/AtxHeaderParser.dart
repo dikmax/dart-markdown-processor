@@ -4,7 +4,7 @@ part of parser;
 class AtxHeaderParser extends AbstractBlockParser<Paragraph> {
   static final AtxHeaderParser _instance = new AtxHeaderParser._internal();
 
-  static final _REGEXP = new RegExp(r'^(#{1,6}) *(.+) *#*$');
+  static final _REGEXP = new RegExp(r'^(#{1,6}) *(.+?) *#*$');
 
   factory AtxHeaderParser() {
     return _instance;
