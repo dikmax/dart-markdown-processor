@@ -10,46 +10,13 @@ class DocumentParser extends AbstractBlockParser<Document> {
 
   DocumentParser._internal();
 
-  // Parsers
-  static List<AbstractBlockParser> get parsers {
-    if (_parsers == null) {
-      _parsers = [
-          new SetextHeaderParser(),
-          new AtxHeaderParser(),
-          new ParagraphParser()
-      ];
-    }
-
-    return _parsers;
-  }
-
-  static List<AbstractBlockParser> _parsers;
-
-
   BlockParseResult<Document> parse(Iterable<String> tokens) {
-    Document document = new Document();
-
-    BlockParseResult<Element> result;
-
-    var l = parsers.length;
-    do {
-      for (var i = 0; i < l; ++i) {
-        result = parsers[i].parse(tokens);
-        if (result != null) {
-          break;
-        }
-      }
-
-      if (result == null) {
-        break;
-      }
-      document.children.add(result.result);
-      tokens = result.tokens;
-    } while (true);
-
-    if (document.children.length == 0) {
+    BlockListParser parser = new BlockListParser();
+    BlockParseResult<List<Element>> result = parser.parse(tokens);
+    if (result == null) {
       return null;
     }
-    return new BlockParseResult([], document);
+
+    return new BlockParseResult([], new Document(result.result));
   }
 }

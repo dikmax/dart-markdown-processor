@@ -12,7 +12,7 @@ class WhitespaceBlockParser extends AbstractBlockParser<String> {
 
   WhitespaceBlockParser._internal();
 
-  BlockParseResult<Header> parse(Iterable<String> tokens) {
+  BlockParseResult<String> parse(Iterable<String> tokens) {
     ParseResult<Iterable<String>, Iterable<String>> result = _bpc.takeWhile(
         tokens, (token) => _REGEXP.hasMatch(token)
     );
