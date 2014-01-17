@@ -17,6 +17,12 @@ class Header extends Element {
 
   Header(this.style, this.level, [List<Node> children = null]) : super(children);
 
+  void accept(Visitor visitor) {
+    visitor.beforeHeader(this);
+    super.accept(visitor);
+    visitor.afterHeader(this);
+  }
+
   String toString() {
     return 'Header${level}(${super.toString()})';
   }

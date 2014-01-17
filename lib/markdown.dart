@@ -8,6 +8,6 @@ Document parseMarkdown(String markdown) {
 
   var documentParser = new DocumentParser();
   var blockParseResult = documentParser.parse(lines);
-  print(blockParseResult.result);
 
+  return blockParseResult.result;
 }

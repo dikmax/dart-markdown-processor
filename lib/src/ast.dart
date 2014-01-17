@@ -7,3 +7,5 @@ part 'ast/Paragraph.dart';
 part 'ast/Document.dart';
 part 'ast/Header.dart';
 part 'ast/Blockquote.dart';
+
+part 'ast/Visitor.dart';

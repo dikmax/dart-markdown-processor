@@ -8,4 +8,8 @@ abstract class Element extends Node {
   String toString() {
     return children.toString();
   }
+
+  void accept(Visitor visitor) {
+    children.forEach((child) => child.accept(visitor));
+  }
 }
