@@ -9,6 +9,9 @@ import 'dart:io';
 void main() {
   File testFile = new File('test.md');
   var string = testFile.readAsStringSync();
-  Html html = new Html();
-  print(html.render(parseMarkdown(string)));
+  Markdown md = new Markdown();
+  print(md.render(parseMarkdown(string)));
+
+  /*Html html = new Html();
+  print(html.render(parseMarkdown(string)));*/
 }
