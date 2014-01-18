@@ -14,10 +14,17 @@ class Markdown extends Abstract {
   }
 
   void beforeBlockquote(Blockquote blockquote) {
-    _sb.write('> ');
+    pushState();
   }
 
   void afterBlockquote(Blockquote blockquote) {
+    String blockquoteString = popState();
+    List<String> blockquoteLines = blockquoteString.split('\n');
+    while (blockquoteLines.last == '') {
+      blockquoteLines.removeLast();
+    }
+    _sb.write(blockquoteLines.map((line) => '> ${line}').join('\n'));
+
     _sb.write('\n\n');
   }
 
