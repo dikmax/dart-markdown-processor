@@ -1,10 +1,10 @@
 part of renderer;
 
 class Markdown extends Abstract {
-  StringBuffer _sb;
+
+  Markdown() : super();
 
   String render(Document document) {
-    _sb = new StringBuffer();
     document.accept(this);
     return _sb.toString();
   }
@@ -24,14 +24,17 @@ class Markdown extends Abstract {
   void beforeHeader(Header header) {
     if (header.style == HeaderStyle.ATX) {
       _sb.write('######'.substring(0, header.level) + ' ');
+    } else {
+      pushState();
     }
   }
 
   void afterHeader(Header header) {
     if (header.style == HeaderStyle.SETEXT) {
+      String headerString = popState();
       _sb
-        ..writeln()
-        ..write(header.level == 1 ? '===' : '---');
+        ..writeln(headerString)
+        ..write(headerString.replaceAll(new RegExp(r'.'), header.level == 1 ? '=' : '-'));
     }
     _sb.write('\n\n');
   }

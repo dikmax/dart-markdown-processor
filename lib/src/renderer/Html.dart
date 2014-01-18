@@ -1,10 +1,10 @@
 part of renderer;
 
 class Html extends Abstract {
-  StringBuffer _sb;
+
+  Html() : super();
 
   String render(Document document) {
-    _sb = new StringBuffer();
     document.accept(this);
 
     return _sb.toString();
