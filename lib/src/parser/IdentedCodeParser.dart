@@ -39,7 +39,7 @@ class IdentedCodeParser extends AbstractBlockParser<Code> {
       lines.removeLast();
     }
 
-    Code code = new Code(CodeStyle.IDENTED, [new Text(lines.join("\n"))]);
+    Code code = new Code.idented([new Text(lines.join("\n"))]);
 
     return new BlockParseResult<Code>(result.tokens, code);
   }

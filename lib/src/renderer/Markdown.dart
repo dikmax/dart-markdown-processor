@@ -29,13 +29,23 @@ class Markdown extends Abstract {
   }
 
   void beforeCode(Code code) {
-    pushState();
+    if (code.style == CodeStyle.IDENTED) {
+      pushState();
+    } else {
+      _sb.writeln(code.fence);
+    }
   }
 
   void afterCode(Code code) {
-    List<String> lines = popState().split('\n');
+    if (code.style == CodeStyle.IDENTED) {
+      List<String> lines = popState().split('\n');
 
-    _sb.write(lines.map((line) => line == '' ? '' : '    ${line}').join('\n'));
+      _sb.write(lines.map((line) => line == '' ? '' : '    ${line}').join('\n'));
+    } else {
+      _sb
+        ..writeln()
+        ..write(code.fence);
+    }
     _sb.write('\n\n');
   }
 

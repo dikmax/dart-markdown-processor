@@ -12,9 +12,24 @@ class CodeStyle {
 }
 
 class Code extends Element {
-  final CodeStyle style;
+  CodeStyle style;
+  String _fence;
 
-  Code(this.style, [List<Node> children = null]) : super(children);
+  Code.idented([List<Node> children = null]) : style = CodeStyle.IDENTED, _fence = null, super(children);
+  Code.fenced(this._fence, [List<Node> children = null]) : style = CodeStyle.FENCED, super(children);
+
+  String get fence => _fence;
+  void set fence (String f) {
+    if (style == CodeStyle.IDENTED) {
+      _fence = null;
+      return;
+    }
+    if (new RegExp(r'^`{3,}|~{3,}$').firstMatch(f) == null) {
+      _fence = '```';
+    } else {
+      _fence = f;
+    }
+  }
 
   void accept(Visitor visitor) {
     visitor.beforeCode(this);

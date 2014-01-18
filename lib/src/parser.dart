@@ -16,6 +16,7 @@ part 'parser/WhitespaceBlockParser.dart';
 part 'parser/DocumentParser.dart';
 
 part 'parser/BlockquoteParser.dart';
+part 'parser/FencedCodeParser.dart';
 part 'parser/IdentedCodeParser.dart';
 part 'parser/AtxHeaderParser.dart';
 part 'parser/SetextHeaderParser.dart';

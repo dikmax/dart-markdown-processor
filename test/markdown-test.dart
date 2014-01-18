@@ -12,6 +12,6 @@ void main() {
   Markdown md = new Markdown();
   print(md.render(parseMarkdown(string)));
 
-  /*Html html = new Html();
-  print(html.render(parseMarkdown(string)));*/
+  Html html = new Html();
+  print(html.render(parseMarkdown(string)));
 }

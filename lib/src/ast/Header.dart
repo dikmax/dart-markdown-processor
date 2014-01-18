@@ -16,6 +16,8 @@ class Header extends Element {
   int level;
 
   Header(this.style, this.level, [List<Node> children = null]) : super(children);
+  Header.atx(this.level, [List<Node> children = null]) : style = HeaderStyle.ATX, super(children);
+  Header.setext(this.level, [List<Node> children = null]) : style = HeaderStyle.SETEXT, super(children);
 
   void accept(Visitor visitor) {
     visitor.beforeHeader(this);

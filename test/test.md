@@ -13,10 +13,19 @@ Header2
 
 Lorem ipsum...
 
+`````
+Github code test
+`````
+
+
 > Testing blockquotes
 >
 > > Level 2
 >> > Level 3
+
+`~`~` text
+Just a test
+`~`~`
 
 > > One More blockquote
 >
