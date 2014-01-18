@@ -6,6 +6,9 @@ abstract class Visitor {
   void beforeBlockquote(Blockquote blockquote);
   void afterBlockquote(Blockquote blockquote);
 
+  void beforeCode(Code code);
+  void afterCode(Code code);
+
   void beforeDocument(Document document);
   void afterDocument(Document document);
 

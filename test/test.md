@@ -6,6 +6,11 @@ Header2
 ##Header 2
 ### Header 3 ####
 
+    Some code
+
+    Same code
+      JA!
+
 Lorem ipsum...
 
 > Testing blockquotes

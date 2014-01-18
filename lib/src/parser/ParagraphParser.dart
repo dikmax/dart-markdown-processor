@@ -11,7 +11,7 @@ class ParagraphParser extends AbstractBlockParser<Paragraph> {
   ParagraphParser._internal();
 
   BlockParseResult<Paragraph> parse(Iterable<String> tokens) {
-    ParseResult<Iterable<String>, Iterable<String>> result = _bpc.takeWhile1(
+    ParseResult<Iterable<String>, Iterable<String>> result = _pc.takeWhile1(
         tokens, (token) => token.isNotEmpty
     );
 

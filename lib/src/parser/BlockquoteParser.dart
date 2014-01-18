@@ -16,7 +16,7 @@ class BlockquoteParser extends AbstractBlockParser<Blockquote> {
       return null;
     }
 
-    ParseResult<Iterable<String>, Iterable<String>> result = _bpc.takeWhile1(
+    ParseResult<Iterable<String>, Iterable<String>> result = _pc.takeWhile1(
         tokens, (token) => token.isNotEmpty
     );
 

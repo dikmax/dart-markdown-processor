@@ -28,6 +28,17 @@ class Markdown extends Abstract {
     _sb.write('\n\n');
   }
 
+  void beforeCode(Code code) {
+    pushState();
+  }
+
+  void afterCode(Code code) {
+    List<String> lines = popState().split('\n');
+
+    _sb.write(lines.map((line) => line == '' ? '' : '    ${line}').join('\n'));
+    _sb.write('\n\n');
+  }
+
   void beforeHeader(Header header) {
     if (header.style == HeaderStyle.ATX) {
       _sb.write('######'.substring(0, header.level) + ' ');

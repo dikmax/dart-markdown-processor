@@ -22,6 +22,14 @@ class Html extends Abstract {
     _sb.write('</blockquote>');
   }
 
+  void beforeCode(Code code) {
+    _sb.write('<pre><code>');
+  }
+
+  void afterCode(Code code) {
+    _sb.write('</code></pre>');
+  }
+
   void beforeHeader(Header header) {
     _sb.write('<h${header.level}>');
   }

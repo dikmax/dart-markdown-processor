@@ -13,7 +13,7 @@ class WhitespaceBlockParser extends AbstractBlockParser<String> {
   static final _REGEXP = new RegExp(r'^\s*$');
 
   BlockParseResult<String> parse(Iterable<String> tokens) {
-    ParseResult<Iterable<String>, Iterable<String>> result = _bpc.takeWhile(
+    ParseResult<Iterable<String>, Iterable<String>> result = _pc.takeWhile(
         tokens, (token) => _REGEXP.hasMatch(token)
     );
 
