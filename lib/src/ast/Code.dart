@@ -38,6 +38,11 @@ class Code extends Element {
   }
 
   String toString() {
-    return 'Code(${super.toString()})';
+    if (style == CodeStyle.IDENTED) {
+      return 'Code(IDENTED, ${super.toString()})';
+    } else {
+
+      return 'Code(FENCED, ${super.toString()})';
+    }
   }
 }

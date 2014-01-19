@@ -16,6 +16,11 @@ class IdentedCodeParser extends AbstractBlockParser<Code> {
       return null;
     }
 
+    Match match = _REGEXP.firstMatch(tokens.first);
+    if (match == null) {
+      return null;
+    }
+
     ParseResult<Iterable<String>, Iterable<String>> result = _pc.takeWhile1AndMap(
         tokens, (token) {
           Match match = _REGEXP.firstMatch(token);

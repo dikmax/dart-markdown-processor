@@ -32,6 +32,9 @@ class BlockListParser extends AbstractBlockParser<List<Element>>{
   BlockParseResult<List<Element>> parse(Iterable<String> tokens) {
     List<Element> parseResult = <Element>[];
 
+    ParseResult<Iterable<String>, String> whitespaceResult = _wbp.parse(tokens);
+    tokens = whitespaceResult.tokens;
+
     BlockParseResult<Element> result;
 
     var l = parsers.length;

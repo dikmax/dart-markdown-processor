@@ -12,7 +12,7 @@ class BlockquoteParser extends AbstractBlockParser<Blockquote> {
   static final _REGEXP = new RegExp(r'^(> ?)?(.*)$');
 
   BlockParseResult<Blockquote> parse(Iterable<String> tokens) {
-    if (tokens.length < 1 || tokens.first[0] != '>') {
+    if (tokens.length < 1 || tokens.first.length < 1 || tokens.first[0] != '>') {
       return null;
     }
 
