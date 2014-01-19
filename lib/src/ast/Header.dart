@@ -26,6 +26,10 @@ class Header extends Element {
   }
 
   String toString() {
-    return 'Header${level}(${super.toString()})';
+    if (style == HeaderStyle.SETEXT) {
+      return 'Header${level}(SETEXT, ${super.toString()})';
+    } else {
+      return 'Header${level}(ATX, ${super.toString()})';
+    }
   }
 }
